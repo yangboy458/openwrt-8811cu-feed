@@ -30,13 +30,13 @@ STAMP_CONFIGURED_DEPENDS := $(STAGING_DIR)/usr/include/mac80211-backport/backpor
 include $(INCLUDE_DIR)/kernel.mk
 include $(INCLUDE_DIR)/package.mk
 
-define KernelPackage/rtl8821cu
+define KernelPackage/rtl8821cu-comfast
   SUBMENU:=Wireless Drivers
   TITLE:=Comfast Realtek RTL8811CU/RTL8821CU support
   DEPENDS:=+kmod-cfg80211 +kmod-usb-core +kmod-mac80211 +@DRIVER_11N_SUPPORT +@DRIVER_11AC_SUPPORT
-  FILES:=$(PKG_BUILD_DIR)/rtl8821cu.ko
-  AUTOLOAD:=$(call AutoProbe,rtl8821cu)
-  PROVIDES:=kmod-rtl8821cu
+  FILES:=$(PKG_BUILD_DIR)/rtl8821cu-comfast.ko
+  AUTOLOAD:=$(call AutoProbe,rtl8821cu-comfast)
+  PROVIDES:=kmod-rtl8821cu-comfast
 endef
 
 NOSTDINC_FLAGS = \
@@ -51,7 +51,7 @@ NOSTDINC_FLAGS = \
 
 EXTRA_KCONFIG:= \
 	CONFIG_RTL8821CU=m \
-	USER_MODULE_NAME=rtl8821cu
+	USER_MODULE_NAME=rtl8821cu-comfast
 
 ifeq ($(ARCH),aarch64)
 	EXTRA_KCONFIG += CONFIG_MP_VHT_HW_TX_MODE=n
