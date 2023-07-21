@@ -8,7 +8,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=rtl8821cu
+PKG_NAME:=rtl8821cu-comfast
 PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://github.com/Pix13/8821cu-20210118.git
@@ -50,7 +50,7 @@ NOSTDINC_FLAGS = \
 	-include backport/backport.h
 
 EXTRA_KCONFIG:= \
-	CONFIG_RTL8821CU=m \
+	CONFIG_RTL8821CU-COMFAST=y \
 	USER_MODULE_NAME=rtl8821cu-comfast
 
 ifeq ($(ARCH),aarch64)
@@ -85,4 +85,4 @@ define Build/Compile
 		modules
 endef
 
-$(eval $(call KernelPackage,rtl8821cu))
+$(eval $(call KernelPackage,rtl8821cu-comfast))
